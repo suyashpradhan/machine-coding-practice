@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+//https://randomuser.me/api/
 
-function App() {
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+//Fetch Data OnLoad Once[3Min]
+
+export const App = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get("https://randomuser.me/api/");
+        setData(response.data.results);
+        setLoading(false);
+      } catch (error) {
+        return error.response.data;
+      }
+    })();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>#01 Fetch Data</h1>
+      <div>
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          data.map((data) => {
+            return (
+              <div key={data.id.value}>
+                <h2>{data.cell}</h2>
+                <h3>{data.name.title}</h3>
+                <h2>{data.name.first}</h2>
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
   );
-}
-
-export default App;
+};
