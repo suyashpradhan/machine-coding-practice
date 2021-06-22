@@ -1,32 +1,19 @@
-import axios from "axios";
+import { useEffect } from "react";
+import axios from "./AxiosConfig";
 
 export const Axios = () => {
-  const handleData = async () => {
-    try {
-      const response = await axios.get(
-        "https://yoga-play-api.vercel.app/videos"
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
-  /*   useEffect(() => {
+  useEffect(() => {
     (async () => {
-      try {
-        const data = await handleData();
-        console.log(data);
-      } catch (error) {
-        console.log(error.response);
-      }
+      const reponse = await axios.get("https://yoga-play-api.vercel.app/");
+      console.log(reponse);
     })();
   }, []);
- */
+
   return (
-    <>
-      <h1>Axios</h1>
-      <button onClick={handleData}>Get Data</button>
-    </>
+    <div>
+      <h1>axios using interceptors</h1>
+      <br />
+      <button>Get Data</button>
+    </div>
   );
 };

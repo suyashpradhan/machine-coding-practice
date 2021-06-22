@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Axios } from "./API/Axios";
+import { App } from "./FastMart/App";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
+import { StateProvider } from "./FastMart/context/state-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Axios />
+      <StateProvider>
+        <App />
+      </StateProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
