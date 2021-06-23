@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import axios from "./AxiosConfig";
+import axiosInstance from "./AxiosInstance";
+import { useState } from "react";
 
 export const Axios = () => {
+  const [data, setData] = useState("");
+
   useEffect(() => {
     (async () => {
-      const reponse = await axios.get("https://yoga-play-api.vercel.app/");
-      console.log(reponse);
+      const response = await axiosInstance.get("/user");
+      setData(response.data);
     })();
   }, []);
 
@@ -13,7 +16,11 @@ export const Axios = () => {
     <div>
       <h1>axios using interceptors</h1>
       <br />
-      <button>Get Data</button>
+
+      <br />
+      <br />
+      <h2>{data.user}</h2>
+      <h5>{data.age}</h5>
     </div>
   );
 };
