@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { DarkMode } from "./DarkMode/DarkMode";
+import { App } from "./Controlled vs Uncontrolled Components/App";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider } from "./DarkMode/context";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <ThemeProvider>
-        <DarkMode />
-      </ThemeProvider>
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
