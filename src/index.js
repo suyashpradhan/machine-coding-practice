@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { App } from "./Controlled vs Uncontrolled Components/App";
+import { App } from "./Quiz/App";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
